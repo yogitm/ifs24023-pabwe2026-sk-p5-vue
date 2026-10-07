@@ -1,5 +1,13 @@
 <template>
-  <div v-if="profile" class="space-y-8 animate-in fade-in duration-300">
+  <div v-if="!profile" class="flex flex-col items-center justify-center py-20">
+    <div
+      class="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"
+      aria-hidden="true"
+    />
+    <h1 class="text-base font-bold text-slate-700 mt-2">Daftar Sesi Lelang</h1>
+    <p class="text-xs text-slate-500 mt-1">Memuat data lelang...</p>
+  </div>
+  <div v-else class="space-y-8 animate-in fade-in duration-300">
     <!-- Header Banner -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div>

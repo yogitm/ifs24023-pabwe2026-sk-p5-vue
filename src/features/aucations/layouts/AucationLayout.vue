@@ -9,7 +9,7 @@
         class="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"
         aria-hidden="true"
       />
-      <p class="text-sm font-medium text-slate-600">Memuat sesi pengguna...</p>
+      <h1 class="text-sm font-medium text-slate-600">Memuat sesi pengguna...</h1>
     </div>
   </main>
 
