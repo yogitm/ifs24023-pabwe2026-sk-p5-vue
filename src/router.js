@@ -22,6 +22,7 @@ export const routes = [
       {
         path: "register",
         name: "register",
+        alias: ["registrasi", "/auth/registrasi"],
         component: RegisterPage,
       },
     ],
@@ -33,6 +34,12 @@ export const routes = [
       {
         path: "",
         name: "home",
+        alias: "aucations",
+        component: HomePage,
+      },
+      {
+        path: "aucations",
+        name: "aucations",
         component: HomePage,
       },
       {

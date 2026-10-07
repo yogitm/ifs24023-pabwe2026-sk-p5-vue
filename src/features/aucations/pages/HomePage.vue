@@ -26,7 +26,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex items-center justify-between">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Total Lelang
           </p>
           <h3 class="text-3xl font-black text-slate-800 mt-1">{{ totalCount }}</h3>
@@ -38,7 +38,7 @@
 
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex items-center justify-between">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Lelang Berlangsung
           </p>
           <h3 class="text-3xl font-black text-emerald-600 mt-1">
@@ -52,7 +52,7 @@
 
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex items-center justify-between">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Lelang Ditutup
           </p>
           <h3 class="text-3xl font-black text-slate-500 mt-1">{{ closedCount }}</h3>
@@ -162,9 +162,9 @@
               </td>
             </tr>
             <tr v-else-if="filteredAucations.length === 0">
-              <td colspan="6" class="px-6 py-12 text-center text-slate-400">
-                <Gavel :size="40" class="mx-auto text-slate-300 mb-2" />
-                <p class="font-medium">Belum ada sesi lelang yang sesuai kriteria.</p>
+              <td colspan="6" class="px-6 py-12 text-center text-slate-500">
+                <Gavel :size="40" class="mx-auto text-slate-400 mb-2" />
+                <p class="font-medium text-slate-600">Belum ada sesi lelang yang sesuai kriteria.</p>
               </td>
             </tr>
             <tr
@@ -174,7 +174,7 @@
               :data-testid="`aucation-row-${aucation.id}`"
               class="hover:bg-slate-50/70 transition-colors group"
             >
-              <td class="px-5 py-4 text-center font-mono text-xs font-bold text-slate-400">
+              <td class="px-5 py-4 text-center font-mono text-xs font-bold text-slate-500">
                 #{{ aucation.id }}
               </td>
               <td class="px-5 py-4">
@@ -187,7 +187,7 @@
                   />
                   <div
                     v-else
-                    class="w-12 h-12 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 shrink-0"
+                    class="w-12 h-12 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 shrink-0"
                   >
                     <Gavel :size="20" />
                   </div>
@@ -195,7 +195,7 @@
                     <p class="font-semibold text-slate-800 leading-snug">
                       {{ aucation.title }}
                     </p>
-                    <p v-if="aucation.author" class="text-xs text-slate-400 mt-0.5">
+                    <p v-if="aucation.author" class="text-xs text-slate-500 mt-0.5">
                       Oleh: {{ aucation.author.name }}
                     </p>
                   </div>

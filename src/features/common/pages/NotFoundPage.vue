@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-50 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+  <main role="main" class="min-h-screen bg-slate-50 flex items-center justify-center p-4 sm:p-6 lg:p-8">
     <div class="max-w-md w-full text-center">
       <!-- Decorative Badge -->
       <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-blue-50 text-blue-600 mb-6 shadow-sm ring-8 ring-blue-50/50 animate-bounce duration-1000">
@@ -39,7 +39,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>

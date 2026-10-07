@@ -42,9 +42,9 @@
           <Loader2 :size="36" class="mx-auto text-blue-600 animate-spin mb-2" aria-hidden="true" />
           <p class="font-medium text-slate-600">Memuat daftar pengguna...</p>
         </div>
-        <div v-else-if="filteredUsers.length === 0" class="col-span-full py-12 text-center text-slate-400">
-          <Users :size="40" class="mx-auto text-slate-300 mb-2" aria-hidden="true" />
-          <p class="font-medium">Tidak ada data pengguna ditemukan.</p>
+        <div v-else-if="filteredUsers.length === 0" class="col-span-full py-12 text-center text-slate-500">
+          <Users :size="40" class="mx-auto text-slate-400 mb-2" aria-hidden="true" />
+          <p class="font-medium text-slate-600">Tidak ada data pengguna ditemukan.</p>
         </div>
         <div
           v-else
@@ -72,16 +72,16 @@
             <div class="min-w-0 flex-1">
               <h3 class="font-bold text-slate-900 truncate">{{ u.name }}</h3>
               <p class="text-xs text-slate-500 flex items-center gap-1 mt-0.5 truncate">
-                <Mail :size="14" class="shrink-0 text-slate-400" />
+                <Mail :size="14" class="shrink-0 text-slate-400" aria-hidden="true" />
                 <span class="truncate">{{ u.email }}</span>
               </p>
             </div>
           </div>
 
-          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
             <span class="font-mono font-semibold">ID: #{{ u.id }}</span>
             <span class="flex items-center gap-1">
-              <Calendar :size="13" />
+              <Calendar :size="13" aria-hidden="true" />
               {{ formatDate(u.created_at) }}
             </span>
           </div>

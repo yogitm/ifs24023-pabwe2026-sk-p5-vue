@@ -15,7 +15,7 @@
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/70">
         <div class="flex items-center gap-2.5">
           <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
-            <Gavel :size="18" :stroke-width="2.5" />
+            <Gavel :size="18" :stroke-width="2.5" aria-hidden="true" />
           </div>
           <div>
             <h3 id="bid-modal-title" class="text-base font-bold text-slate-800">Ajukan Tawaran</h3>
@@ -29,7 +29,7 @@
           @click="onClose"
           class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
         >
-          <X :size="18" />
+          <X :size="18" aria-hidden="true" />
         </button>
       </div>
 

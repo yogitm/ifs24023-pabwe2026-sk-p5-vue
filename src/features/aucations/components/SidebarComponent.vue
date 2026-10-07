@@ -14,7 +14,7 @@
     >
       <div class="flex flex-col h-full justify-between">
         <div class="space-y-4">
-          <p class="px-3 text-xs font-bold uppercase tracking-wider text-slate-400">
+          <p class="px-3 text-xs font-bold uppercase tracking-wider text-slate-500">
             Menu Utama
           </p>
           <nav aria-label="Navigasi Utama" class="space-y-1">
@@ -62,7 +62,7 @@
           </nav>
         </div>
 
-        <div class="pt-3 border-t border-slate-100 px-3 text-xs text-slate-400 flex items-center justify-between">
+        <div class="pt-3 border-t border-slate-100 px-3 text-xs text-slate-500 flex items-center justify-between">
           <span>Delcom Auction</span>
           <span>PABWE P5</span>
         </div>

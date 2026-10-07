@@ -79,21 +79,21 @@
       <div class="p-6 sm:p-8 space-y-6">
         <div class="space-y-3">
           <div class="flex items-center gap-3">
-            <span class="font-mono text-xs font-bold text-slate-400">
+            <span class="font-mono text-xs font-bold text-slate-500">
               #{{ aucation.id }}
             </span>
             <span
               v-if="aucation.is_closed"
               class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200"
             >
-              <CheckCircle2 :size="14" />
+              <CheckCircle2 :size="14" aria-hidden="true" />
               Lelang Ditutup
             </span>
             <span
               v-else
               class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200"
             >
-              <Clock :size="14" />
+              <Clock :size="14" aria-hidden="true" />
               Sedang Berlangsung
             </span>
           </div>
@@ -105,33 +105,33 @@
           <!-- Price & Meta Information -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-xs text-slate-400 font-medium">Harga Awal</span>
+              <span class="text-xs text-slate-500 font-medium">Harga Awal</span>
               <p class="text-lg font-bold text-slate-800 mt-0.5">
                 {{ formatRupiah(aucation.start_bid || 0) }}
               </p>
             </div>
             <div class="p-4 rounded-2xl bg-blue-50/60 border border-blue-100">
-              <span class="text-xs text-blue-500 font-medium">Penawaran Tertinggi</span>
+              <span class="text-xs text-blue-700 font-medium">Penawaran Tertinggi</span>
               <p class="text-lg font-bold text-blue-700 mt-0.5">
                 {{ formatRupiah(highestBid) }}
               </p>
             </div>
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-xs text-slate-400 font-medium">Batas Waktu Penutupan</span>
+              <span class="text-xs text-slate-500 font-medium">Batas Waktu Penutupan</span>
               <p class="text-sm font-bold text-slate-700 mt-1">
                 {{ formatDate(aucation.closed_at) }}
               </p>
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400 pt-1">
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500 pt-1">
             <div class="flex items-center gap-1.5">
-              <Calendar :size="14" class="shrink-0" />
-              <span>Dibuat: <strong class="text-slate-500">{{ formatDate(aucation.created_at) }}</strong></span>
+              <Calendar :size="14" class="shrink-0" aria-hidden="true" />
+              <span>Dibuat: <strong class="text-slate-700">{{ formatDate(aucation.created_at) }}</strong></span>
             </div>
             <div v-if="aucation.author" class="flex items-center gap-1.5">
-              <User :size="14" class="shrink-0" />
-              <span>Pelelang: <strong class="text-slate-500">{{ aucation.author.name }}</strong></span>
+              <User :size="14" class="shrink-0" aria-hidden="true" />
+              <span>Pelelang: <strong class="text-slate-700">{{ aucation.author.name }}</strong></span>
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@
             class="prose max-w-none text-slate-600 bg-slate-50/60 p-6 rounded-2xl border border-slate-100 leading-relaxed"
           >
             <MarkdownViewer v-if="aucation.description" :content="aucation.description" />
-            <p v-else class="italic text-slate-400">Tidak ada deskripsi rinci untuk barang ini.</p>
+            <p v-else class="italic text-slate-500">Tidak ada deskripsi rinci untuk barang ini.</p>
           </div>
         </div>
 
@@ -152,12 +152,12 @@
         <div class="pt-4 border-t border-slate-100">
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
-              <Gavel :size="18" class="text-blue-600" />
+              <Gavel :size="18" class="text-blue-600" aria-hidden="true" />
               Riwayat Penawaran ({{ bidsList.length }})
             </h2>
           </div>
 
-          <div v-if="bidsList.length === 0" class="text-center py-8 rounded-2xl bg-slate-50 border border-slate-100 text-slate-400 text-sm">
+          <div v-if="bidsList.length === 0" class="text-center py-8 rounded-2xl bg-slate-50 border border-slate-100 text-slate-600 text-sm">
             Belum ada penawaran yang diajukan untuk lelang ini. Jadilah penawar pertama!
           </div>
 
@@ -190,7 +190,7 @@
                   <td class="px-4 py-3 font-bold text-emerald-600">
                     {{ formatRupiah(bid.bid) }}
                   </td>
-                  <td class="px-4 py-3 hidden sm:table-cell text-xs text-slate-400">
+                  <td class="px-4 py-3 hidden sm:table-cell text-xs text-slate-500">
                     {{ formatDate(bid.created_at) }}
                   </td>
                   <td class="px-4 py-3 text-right">
@@ -203,7 +203,7 @@
                     >
                       Batalkan
                     </button>
-                    <span v-else class="text-xs text-slate-400">-</span>
+                    <span v-else class="text-xs text-slate-500">-</span>
                   </td>
                 </tr>
               </tbody>
