@@ -14,7 +14,7 @@
           <Edit3 :size="18" :stroke-width="2.5" aria-hidden="true" />
         </div>
         <div>
-          <h3 id="edit-modal-title" class="text-base font-bold text-slate-800">Ubah Data Lelang</h3>
+          <h2 id="edit-modal-title" class="text-base font-bold text-slate-800">Ubah Data Lelang</h2>
           <p class="text-xs text-slate-500">Perbarui judul, harga awal, batas waktu, dan deskripsi lelang</p>
         </div>
       </div>

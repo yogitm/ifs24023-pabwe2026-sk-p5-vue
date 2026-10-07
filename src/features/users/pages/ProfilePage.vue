@@ -35,8 +35,8 @@
           data-testid="upload-profile-photo-btn"
           class="absolute bottom-0 right-0 p-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-md cursor-pointer transition-transform hover:scale-105"
           title="Ubah Foto Profil"
-          aria-label="Ubah Foto Profil"
         >
+          <span class="sr-only">Ubah Foto Profil</span>
           <Loader2 v-if="loadingPhoto" :size="16" class="animate-spin" aria-hidden="true" />
           <Camera v-else :size="16" aria-hidden="true" />
           <input

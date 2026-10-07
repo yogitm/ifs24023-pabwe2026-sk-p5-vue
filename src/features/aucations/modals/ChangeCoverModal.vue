@@ -16,7 +16,7 @@
           <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center">
             <ImagePlus :size="18" :stroke-width="2.5" aria-hidden="true" />
           </div>
-          <h3 id="cover-modal-title" class="text-base font-bold text-slate-800">Ubah Cover Lelang</h3>
+          <h2 id="cover-modal-title" class="text-base font-bold text-slate-800">Ubah Cover Lelang</h2>
         </div>
         <button
           type="button"

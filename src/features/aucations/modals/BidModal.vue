@@ -18,7 +18,7 @@
             <Gavel :size="18" :stroke-width="2.5" aria-hidden="true" />
           </div>
           <div>
-            <h3 id="bid-modal-title" class="text-base font-bold text-slate-800">Ajukan Tawaran</h3>
+            <h2 id="bid-modal-title" class="text-base font-bold text-slate-800">Ajukan Tawaran</h2>
             <p class="text-xs text-slate-500">Masukkan nominal penawaran lelang</p>
           </div>
         </div>

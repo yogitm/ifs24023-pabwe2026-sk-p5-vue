@@ -14,7 +14,7 @@
           <Plus :size="18" :stroke-width="2.5" aria-hidden="true" />
         </div>
         <div>
-          <h3 id="add-modal-title" class="text-base font-bold text-slate-800">Tambah Sesi Lelang Baru</h3>
+          <h2 id="add-modal-title" class="text-base font-bold text-slate-800">Tambah Sesi Lelang Baru</h2>
           <p class="text-xs text-slate-500">Buat lelang barang baru dengan harga awal, batas waktu, dan deskripsi</p>
         </div>
       </div>

@@ -15,6 +15,20 @@ export default defineConfig(({ mode }) => {
     preview: {
       port: Number(env.APP_PORT) || 3000,
     },
+    build: {
+      sourcemap: true,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes("node_modules")) {
+              if (id.includes("@toast-ui")) return "toastui";
+              if (id.includes("lucide")) return "lucide";
+              return "vendor";
+            }
+          },
+        },
+      },
+    },
     define: {
       DELCOM_BASEURL: JSON.stringify(
         env.VITE_DELCOM_BASEURL || "https://open-api.delcom.org/api/v1"

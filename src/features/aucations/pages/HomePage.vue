@@ -29,10 +29,10 @@
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Total Lelang
           </p>
-          <h3 class="text-3xl font-black text-slate-800 mt-1">{{ totalCount }}</h3>
+          <p class="text-3xl font-black text-slate-800 mt-1">{{ totalCount }}</p>
         </div>
         <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
-          <Gavel :size="26" :stroke-width="2" />
+          <Gavel :size="26" :stroke-width="2" aria-hidden="true" />
         </div>
       </div>
 
@@ -41,12 +41,12 @@
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Lelang Berlangsung
           </p>
-          <h3 class="text-3xl font-black text-emerald-600 mt-1">
+          <p class="text-3xl font-black text-emerald-600 mt-1">
             {{ activeCount }}
-          </h3>
+          </p>
         </div>
         <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
-          <Clock :size="26" :stroke-width="2" />
+          <Clock :size="26" :stroke-width="2" aria-hidden="true" />
         </div>
       </div>
 
@@ -55,15 +55,16 @@
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Lelang Ditutup
           </p>
-          <h3 class="text-3xl font-black text-slate-500 mt-1">{{ closedCount }}</h3>
+          <p class="text-3xl font-black text-slate-700 mt-1">{{ closedCount }}</p>
         </div>
         <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-600 flex items-center justify-center">
-          <CheckCircle2 :size="26" :stroke-width="2" />
+          <CheckCircle2 :size="26" :stroke-width="2" aria-hidden="true" />
         </div>
       </div>
     </div>
 
     <!-- Table & Controls Section -->
+    <h2 class="sr-only">Daftar Sesi Lelang Aktif dan Riwayat</h2>
     <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
       <!-- Filter Bar -->
       <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -87,7 +88,7 @@
 
         <div class="flex flex-wrap items-center gap-3">
           <!-- Filter is_me -->
-          <div class="inline-flex rounded-xl bg-slate-100 p-1 text-xs font-semibold text-slate-600">
+          <div class="inline-flex rounded-xl bg-slate-100 p-1 text-xs font-semibold text-slate-700">
             <button
               type="button"
               data-testid="filter-all-aucations-btn"
@@ -109,7 +110,7 @@
           </div>
 
           <!-- Filter is_closed -->
-          <div class="inline-flex rounded-xl bg-slate-100 p-1 text-xs font-semibold text-slate-600">
+          <div class="inline-flex rounded-xl bg-slate-100 p-1 text-xs font-semibold text-slate-700">
             <button
               type="button"
               data-testid="filter-all-status-btn"
@@ -212,14 +213,14 @@
                   v-if="aucation.is_closed"
                   class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-500" aria-hidden="true" />
                   Ditutup
                 </span>
                 <span
                   v-else
                   class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
                   Berlangsung
                 </span>
               </td>
