@@ -22,9 +22,10 @@
           type="button"
           data-testid="place-bid-btn"
           @click="showBidModal = true"
+          aria-label="Ajukan Tawaran Lelang"
           class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm shadow-emerald-600/25 transition-all"
         >
-          <Gavel :size="16" />
+          <Gavel :size="16" aria-hidden="true" />
           Ajukan Tawaran
         </button>
 
@@ -33,27 +34,30 @@
             type="button"
             data-testid="edit-cover-btn"
             @click="showCoverModal = true"
+            aria-label="Ubah Cover Lelang"
             class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl text-sky-700 bg-sky-50 hover:bg-sky-100 border border-sky-200/60 transition-colors"
           >
-            <ImagePlus :size="16" />
+            <ImagePlus :size="16" aria-hidden="true" />
             Ubah Cover
           </button>
           <button
             type="button"
             data-testid="edit-detail-aucation-btn"
             @click="showEditModal = true"
+            aria-label="Ubah Data Lelang"
             class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200/60 transition-colors"
           >
-            <Edit3 :size="16" />
+            <Edit3 :size="16" aria-hidden="true" />
             Ubah Data
           </button>
           <button
             type="button"
             data-testid="delete-detail-aucation-btn"
             @click="handleDelete"
+            aria-label="Hapus Lelang"
             class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl text-red-700 bg-red-50 hover:bg-red-100 border border-red-200/60 transition-colors"
           >
-            <Trash2 :size="16" />
+            <Trash2 :size="16" aria-hidden="true" />
             Hapus
           </button>
         </template>
@@ -66,7 +70,7 @@
       <div v-if="aucation.cover" class="relative w-full h-64 sm:h-80 bg-slate-900 overflow-hidden">
         <img
           :src="aucation.cover"
-          :alt="aucation.title"
+          :alt="`Cover lelang ${aucation.title}`"
           class="w-full h-full object-cover"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
@@ -161,10 +165,10 @@
             <table class="w-full text-left text-sm text-slate-600">
               <thead class="bg-slate-50 text-xs uppercase font-semibold text-slate-500 border-b border-slate-100">
                 <tr>
-                  <th class="px-4 py-3">Penawar</th>
-                  <th class="px-4 py-3">Nominal Tawaran</th>
-                  <th class="px-4 py-3 hidden sm:table-cell">Waktu</th>
-                  <th class="px-4 py-3 text-right">Aksi</th>
+                  <th scope="col" class="px-4 py-3">Penawar</th>
+                  <th scope="col" class="px-4 py-3">Nominal Tawaran</th>
+                  <th scope="col" class="px-4 py-3 hidden sm:table-cell">Waktu</th>
+                  <th scope="col" class="px-4 py-3 text-right">Aksi</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100">

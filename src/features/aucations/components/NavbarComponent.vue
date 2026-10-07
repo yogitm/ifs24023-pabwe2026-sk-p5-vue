@@ -28,17 +28,22 @@
         <button
           type="button"
           data-testid="profile-dropdown-button"
+          aria-label="Menu Profil Pengguna"
+          aria-haspopup="true"
+          :aria-expanded="dropdownOpen"
           @click="dropdownOpen = !dropdownOpen"
           class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20"
         >
           <img
             v-if="userProfile?.photo"
             :src="userProfile.photo"
-            :alt="userProfile.name"
+            :alt="userProfile.name ? `Foto profil ${userProfile.name}` : 'Foto profil'"
             class="w-7 h-7 rounded-full object-cover border border-slate-200"
           />
           <div
             v-else
+            role="img"
+            aria-label="Inisial profil pengguna"
             class="w-7 h-7 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs"
           >
             {{ userProfile?.name ? userProfile.name.charAt(0).toUpperCase() : "U" }}
@@ -53,6 +58,7 @@
             </span>
           </div>
           <ChevronDown
+            aria-hidden="true"
             :size="14"
             class="text-slate-400 transition-transform duration-200"
             :class="{ 'rotate-180': dropdownOpen }"
@@ -61,6 +67,8 @@
 
         <div
           v-if="dropdownOpen"
+          role="menu"
+          aria-label="Menu Pengguna"
           data-testid="profile-dropdown-menu"
           class="absolute right-0 mt-2 w-52 rounded-lg bg-white p-1.5 shadow-lg border border-slate-200 divide-y divide-slate-100 z-50"
         >
@@ -72,11 +80,12 @@
           <div class="py-1">
             <button
               type="button"
+              role="menuitem"
               data-testid="dropdown-profile-link"
               @click="handleProfileClick"
               class="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-md hover:bg-slate-100 transition-colors text-left"
             >
-              <User :size="16" class="text-slate-500" />
+              <User aria-hidden="true" :size="16" class="text-slate-500" />
               Profil Saya
             </button>
           </div>
@@ -84,11 +93,12 @@
           <div class="pt-1">
             <button
               type="button"
+              role="menuitem"
               data-testid="dropdown-logout-button"
               @click="handleLogoutClick"
               class="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 rounded-md hover:bg-red-50 transition-colors text-left"
             >
-              <LogOut :size="16" class="text-red-500" />
+              <LogOut aria-hidden="true" :size="16" class="text-red-500" />
               Keluar
             </button>
           </div>

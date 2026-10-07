@@ -14,9 +14,10 @@
         type="button"
         data-testid="add-aucation-btn"
         @click="showAddModal = true"
+        aria-label="Tambah Sesi Lelang Baru"
         class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 shadow-md shadow-blue-600/25 transition-all self-start sm:self-auto"
       >
-        <Plus :size="18" :stroke-width="2.5" />
+        <Plus :size="18" :stroke-width="2.5" aria-hidden="true" />
         <span>Tambah Lelang</span>
       </button>
     </div>
@@ -67,15 +68,19 @@
       <!-- Filter Bar -->
       <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div class="relative flex-1 max-w-md">
+          <label for="search-aucation-input" class="sr-only">Cari Sesi Lelang</label>
           <Search
             :size="18"
             class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+            aria-hidden="true"
           />
           <input
             type="text"
+            id="search-aucation-input"
             data-testid="search-aucation-input"
             v-model="searchQuery"
             placeholder="Cari judul barang atau deskripsi..."
+            aria-label="Cari judul barang atau deskripsi lelang"
             class="w-full pl-10 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all"
           />
         </div>
@@ -141,12 +146,12 @@
         <table class="w-full text-left text-sm text-slate-600">
           <thead class="bg-slate-50/80 text-xs uppercase tracking-wider font-semibold text-slate-500 border-b border-slate-100">
             <tr>
-              <th class="px-5 py-3.5 text-center w-16">ID</th>
-              <th class="px-5 py-3.5">Barang Lelang</th>
-              <th class="px-5 py-3.5">Harga Awal</th>
-              <th class="px-5 py-3.5 hidden md:table-cell">Batas Waktu</th>
-              <th class="px-5 py-3.5">Status</th>
-              <th class="px-5 py-3.5 text-right">Aksi</th>
+              <th scope="col" class="px-5 py-3.5 text-center w-16">ID</th>
+              <th scope="col" class="px-5 py-3.5">Barang Lelang</th>
+              <th scope="col" class="px-5 py-3.5">Harga Awal</th>
+              <th scope="col" class="px-5 py-3.5 hidden md:table-cell">Batas Waktu</th>
+              <th scope="col" class="px-5 py-3.5">Status</th>
+              <th scope="col" class="px-5 py-3.5 text-right">Aksi</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100">
@@ -225,9 +230,10 @@
                     :data-testid="`view-aucation-${aucation.id}`"
                     @click="router.push(`/aucations/${aucation.id}`)"
                     class="p-1.5 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                    title="Lihat Detail"
+                    :title="`Lihat detail lelang ${aucation.title}`"
+                    :aria-label="`Lihat detail lelang ${aucation.title}`"
                   >
-                    <Eye :size="18" />
+                    <Eye :size="18" aria-hidden="true" />
                   </button>
                   <button
                     v-if="canManage(aucation)"
@@ -235,9 +241,10 @@
                     :data-testid="`edit-aucation-${aucation.id}`"
                     @click="handleEditAucation(aucation.id)"
                     class="p-1.5 text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors"
-                    title="Ubah Lelang"
+                    :title="`Ubah lelang ${aucation.title}`"
+                    :aria-label="`Ubah lelang ${aucation.title}`"
                   >
-                    <Pencil :size="18" />
+                    <Pencil :size="18" aria-hidden="true" />
                   </button>
                   <button
                     v-if="canManage(aucation)"
@@ -245,9 +252,10 @@
                     :data-testid="`delete-aucation-${aucation.id}`"
                     @click="handleDeleteAucation(aucation.id)"
                     class="p-1.5 text-slate-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                    title="Hapus Lelang"
+                    :title="`Hapus lelang ${aucation.title}`"
+                    :aria-label="`Hapus lelang ${aucation.title}`"
                   >
-                    <Trash2 :size="18" />
+                    <Trash2 :size="18" aria-hidden="true" />
                   </button>
                 </div>
               </td>

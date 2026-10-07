@@ -2,6 +2,9 @@
   <div
     v-if="show && aucation"
     data-testid="change-cover-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cover-modal-title"
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200"
   >
     <div
@@ -11,35 +14,36 @@
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/70">
         <div class="flex items-center gap-2.5">
           <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center">
-            <ImagePlus :size="18" :stroke-width="2.5" />
+            <ImagePlus :size="18" :stroke-width="2.5" aria-hidden="true" />
           </div>
-          <h3 class="text-base font-bold text-slate-800">Ubah Cover Lelang</h3>
+          <h3 id="cover-modal-title" class="text-base font-bold text-slate-800">Ubah Cover Lelang</h3>
         </div>
         <button
           type="button"
           data-testid="close-cover-modal-btn"
           @click="onClose"
+          aria-label="Tutup modal ubah cover"
           class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
         >
-          <X :size="18" />
+          <X :size="18" aria-hidden="true" />
         </button>
       </div>
 
       <form @submit.prevent="handleSave" class="p-6 space-y-4">
         <div>
-          <label class="block text-sm font-semibold text-slate-700 mb-2">
+          <label for="cover-file-input" class="block text-sm font-semibold text-slate-700 mb-2">
             Pilih Gambar Cover
           </label>
-          <label class="flex flex-col items-center justify-center w-full h-44 border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-2xl cursor-pointer bg-slate-50/50 hover:bg-blue-50/20 transition-all overflow-hidden relative">
+          <label for="cover-file-input" class="flex flex-col items-center justify-center w-full h-44 border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-2xl cursor-pointer bg-slate-50/50 hover:bg-blue-50/20 transition-all overflow-hidden relative">
             <img
               v-if="previewUrl"
               :src="previewUrl"
-              alt="Preview"
+              :alt="`Pratinjau cover ${aucation.title}`"
               class="w-full h-full object-cover"
             />
             <div v-else class="flex flex-col items-center justify-center pt-5 pb-6 text-center px-4">
               <div class="w-10 h-10 mb-2 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
-                <Upload :size="20" />
+                <Upload :size="20" aria-hidden="true" />
               </div>
               <p class="text-sm font-semibold text-slate-700">
                 Klik untuk memilih foto
@@ -48,9 +52,11 @@
             </div>
             <input
               type="file"
+              id="cover-file-input"
               data-testid="cover-file-input"
               accept=".jpg,.jpeg,.png"
               @change="handleFileChange"
+              aria-label="Pilih berkas gambar cover lelang"
               class="hidden"
             />
           </label>
@@ -62,6 +68,7 @@
             data-testid="cancel-cover-modal-btn"
             @click="onClose"
             :disabled="loading"
+            aria-label="Batal"
             class="px-4 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-colors"
           >
             Batal
@@ -70,14 +77,15 @@
             type="submit"
             data-testid="submit-cover-modal-btn"
             :disabled="loading"
+            aria-label="Unggah Cover"
             class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 rounded-xl shadow-md shadow-sky-600/25 transition-all disabled:opacity-60"
           >
             <template v-if="loading">
-              <Loader2 :size="18" class="animate-spin" />
+              <Loader2 :size="18" class="animate-spin" aria-hidden="true" />
               <span>Mengunggah...</span>
             </template>
             <template v-else>
-              <Upload :size="18" :stroke-width="2.5" />
+              <Upload :size="18" :stroke-width="2.5" aria-hidden="true" />
               <span>Unggah Cover</span>
             </template>
           </button>

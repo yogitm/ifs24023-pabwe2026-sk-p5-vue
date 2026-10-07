@@ -2,16 +2,19 @@
   <div
     v-if="show"
     data-testid="add-aucation-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="add-modal-title"
     class="fixed inset-0 z-50 flex flex-col bg-white animate-in fade-in duration-200 overflow-hidden"
   >
     <!-- Modal Header -->
     <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50/80 shrink-0">
       <div class="flex items-center gap-2.5">
         <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center">
-          <Plus :size="18" :stroke-width="2.5" />
+          <Plus :size="18" :stroke-width="2.5" aria-hidden="true" />
         </div>
         <div>
-          <h3 class="text-base font-bold text-slate-800">Tambah Sesi Lelang Baru</h3>
+          <h3 id="add-modal-title" class="text-base font-bold text-slate-800">Tambah Sesi Lelang Baru</h3>
           <p class="text-xs text-slate-500">Buat lelang barang baru dengan harga awal, batas waktu, dan deskripsi</p>
         </div>
       </div>
@@ -19,9 +22,10 @@
         type="button"
         data-testid="close-add-modal-btn"
         @click="onClose"
+        aria-label="Tutup modal tambah lelang"
         class="p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-slate-200/60 transition-colors"
       >
-        <X :size="20" />
+        <X :size="20" aria-hidden="true" />
       </button>
     </div>
 
@@ -30,45 +34,51 @@
       <div class="flex-1 overflow-y-auto p-6 md:p-8 space-y-4 w-full">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="md:col-span-2">
-            <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+            <label for="add-aucation-title-input" class="block text-sm font-semibold text-slate-700 mb-1.5">
               Judul Barang Lelang <span class="text-red-500">*</span>
             </label>
             <input
               type="text"
+              id="add-aucation-title-input"
               data-testid="add-aucation-title-input"
               v-model="title"
               placeholder="Contoh: MacBook Pro M2 16 Inch"
               class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all text-sm shadow-xs"
               required
+              aria-required="true"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+            <label for="add-aucation-start-bid-input" class="block text-sm font-semibold text-slate-700 mb-1.5">
               Harga Awal (Start Bid - Rp) <span class="text-red-500">*</span>
             </label>
             <input
               type="number"
               min="1000"
               step="1000"
+              id="add-aucation-start-bid-input"
               data-testid="add-aucation-start-bid-input"
               v-model="startBid"
               placeholder="Contoh: 500000"
               class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all text-sm shadow-xs"
               required
+              aria-required="true"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+            <label for="add-aucation-closed-at-input" class="block text-sm font-semibold text-slate-700 mb-1.5">
               Batas Waktu Penutupan <span class="text-red-500">*</span>
             </label>
             <input
               type="datetime-local"
+              id="add-aucation-closed-at-input"
               data-testid="add-aucation-closed-at-input"
               v-model="closedAt"
               class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all text-sm shadow-xs"
               required
+              aria-required="true"
             />
           </div>
         </div>
@@ -95,6 +105,7 @@
           data-testid="cancel-add-modal-btn"
           @click="onClose"
           :disabled="loading"
+          aria-label="Batal"
           class="px-5 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-200/60 rounded-xl transition-colors"
         >
           Batal
@@ -103,14 +114,15 @@
           type="submit"
           data-testid="submit-add-modal-btn"
           :disabled="loading"
+          aria-label="Tambah Sesi Lelang"
           class="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-xl shadow-md shadow-blue-600/25 transition-all disabled:opacity-60"
         >
           <template v-if="loading">
-            <Loader2 :size="18" class="animate-spin" />
+            <Loader2 :size="18" class="animate-spin" aria-hidden="true" />
             <span>Menyimpan...</span>
           </template>
           <template v-else>
-            <Plus :size="18" :stroke-width="2.5" />
+            <Plus :size="18" :stroke-width="2.5" aria-hidden="true" />
             <span>Tambah Lelang</span>
           </template>
         </button>

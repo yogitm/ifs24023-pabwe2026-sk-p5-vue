@@ -5,6 +5,9 @@
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200"
   >
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bid-modal-title"
       class="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden transform transition-all"
       @click.stop
     >
@@ -15,13 +18,14 @@
             <Gavel :size="18" :stroke-width="2.5" />
           </div>
           <div>
-            <h3 class="text-base font-bold text-slate-800">Ajukan Tawaran</h3>
+            <h3 id="bid-modal-title" class="text-base font-bold text-slate-800">Ajukan Tawaran</h3>
             <p class="text-xs text-slate-500">Masukkan nominal penawaran lelang</p>
           </div>
         </div>
         <button
           type="button"
           data-testid="close-bid-modal-btn"
+          aria-label="Tutup dialog penawaran"
           @click="onClose"
           class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
         >
@@ -46,10 +50,11 @@
         </div>
 
         <div>
-          <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+          <label for="bid-amount-input" class="block text-sm font-semibold text-slate-700 mb-1.5">
             Nominal Tawaran Anda (Rp) <span class="text-red-500">*</span>
           </label>
           <input
+            id="bid-amount-input"
             type="number"
             min="1000"
             step="1000"
@@ -58,6 +63,7 @@
             :placeholder="`Minimal ${formatRupiah(minimumBid)}`"
             class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-all text-sm shadow-xs"
             required
+            aria-required="true"
           />
           <p class="text-xs text-slate-500 mt-1.5">
             Tawaran harus minimal bernilai <span class="font-semibold text-emerald-700">{{ formatRupiah(minimumBid) }}</span>
@@ -69,6 +75,7 @@
           <button
             type="button"
             data-testid="cancel-bid-modal-btn"
+            aria-label="Batal ajukan tawaran"
             @click="onClose"
             :disabled="loading"
             class="px-4 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-colors"
@@ -78,6 +85,7 @@
           <button
             type="submit"
             data-testid="submit-bid-modal-btn"
+            aria-label="Kirim tawaran lelang"
             :disabled="loading"
             class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 rounded-xl shadow-md shadow-emerald-600/25 transition-all disabled:opacity-60"
           >

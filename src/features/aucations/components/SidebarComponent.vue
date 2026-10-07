@@ -17,7 +17,7 @@
           <p class="px-3 text-xs font-bold uppercase tracking-wider text-slate-400">
             Menu Utama
           </p>
-          <nav class="space-y-1">
+          <nav aria-label="Navigasi Utama" class="space-y-1">
             <RouterLink
               v-for="item in navItems"
               :key="item.to"
@@ -29,6 +29,7 @@
             >
               <a
                 :href="href"
+                :aria-current="(item.exact ? isExactActive : isActive) ? 'page' : undefined"
                 @click="navigate"
                 class="flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors"
                 :class="
@@ -40,6 +41,7 @@
                 <div class="flex items-center gap-3">
                   <component
                     :is="item.icon"
+                    aria-hidden="true"
                     :size="18"
                     :class="
                       (item.exact ? isExactActive : isActive)
@@ -51,6 +53,7 @@
                 </div>
                 <ChevronRight
                   v-if="item.exact ? isExactActive : isActive"
+                  aria-hidden="true"
                   :size="14"
                   class="text-blue-500"
                 />

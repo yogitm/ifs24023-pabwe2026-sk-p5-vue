@@ -15,15 +15,19 @@
       <!-- Header Search -->
       <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between gap-4">
         <div class="relative flex-1 max-w-md">
+          <label for="search-user-input" class="sr-only">Cari Pengguna</label>
           <Search
             :size="18"
             class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+            aria-hidden="true"
           />
           <input
             type="text"
+            id="search-user-input"
             data-testid="search-user-input"
             v-model="search"
             placeholder="Cari pengguna berdasarkan nama atau email..."
+            aria-label="Cari pengguna berdasarkan nama atau email"
             class="w-full pl-10 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all"
           />
         </div>
@@ -35,11 +39,11 @@
       <!-- User Grid -->
       <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div v-if="loadingUsers && filteredUsers.length === 0" class="col-span-full py-16 text-center text-slate-400">
-          <Loader2 :size="36" class="mx-auto text-blue-600 animate-spin mb-2" />
+          <Loader2 :size="36" class="mx-auto text-blue-600 animate-spin mb-2" aria-hidden="true" />
           <p class="font-medium text-slate-600">Memuat daftar pengguna...</p>
         </div>
         <div v-else-if="filteredUsers.length === 0" class="col-span-full py-12 text-center text-slate-400">
-          <Users :size="40" class="mx-auto text-slate-300 mb-2" />
+          <Users :size="40" class="mx-auto text-slate-300 mb-2" aria-hidden="true" />
           <p class="font-medium">Tidak ada data pengguna ditemukan.</p>
         </div>
         <div
@@ -53,11 +57,13 @@
             <img
               v-if="u.photo"
               :src="u.photo"
-              :alt="u.name"
+              :alt="`Foto profil ${u.name}`"
               class="w-12 h-12 rounded-full object-cover border border-slate-200 shrink-0"
             />
             <div
               v-else
+              role="img"
+              :aria-label="`Inisial foto profil ${u.name || 'pengguna'}`"
               class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 text-white flex items-center justify-center font-bold text-base shrink-0"
             >
               {{ u.name ? u.name.charAt(0).toUpperCase() : "U" }}

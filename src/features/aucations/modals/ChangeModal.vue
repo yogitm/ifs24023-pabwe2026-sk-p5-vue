@@ -2,16 +2,19 @@
   <div
     v-if="show"
     data-testid="edit-aucation-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="edit-modal-title"
     class="fixed inset-0 z-50 flex flex-col bg-white animate-in fade-in duration-200 overflow-hidden"
   >
     <!-- Modal Header -->
     <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50/80 shrink-0">
       <div class="flex items-center gap-2.5">
         <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center">
-          <Edit3 :size="18" :stroke-width="2.5" />
+          <Edit3 :size="18" :stroke-width="2.5" aria-hidden="true" />
         </div>
         <div>
-          <h3 class="text-base font-bold text-slate-800">Ubah Data Lelang</h3>
+          <h3 id="edit-modal-title" class="text-base font-bold text-slate-800">Ubah Data Lelang</h3>
           <p class="text-xs text-slate-500">Perbarui judul, harga awal, batas waktu, dan deskripsi lelang</p>
         </div>
       </div>
@@ -19,9 +22,10 @@
         type="button"
         data-testid="close-edit-modal-btn"
         @click="onClose"
+        aria-label="Tutup modal ubah lelang"
         class="p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-slate-200/60 transition-colors"
       >
-        <X :size="20" />
+        <X :size="20" aria-hidden="true" />
       </button>
     </div>
 
@@ -30,45 +34,51 @@
       <div class="flex-1 overflow-y-auto p-6 md:p-8 space-y-4 w-full">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="md:col-span-2">
-            <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+            <label for="edit-aucation-title-input" class="block text-sm font-semibold text-slate-700 mb-1.5">
               Judul Barang Lelang <span class="text-red-500">*</span>
             </label>
             <input
               type="text"
+              id="edit-aucation-title-input"
               data-testid="edit-aucation-title-input"
               v-model="title"
               placeholder="Contoh: MacBook Pro M2 16 Inch"
               class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 transition-all text-sm shadow-xs"
               required
+              aria-required="true"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+            <label for="edit-aucation-start-bid-input" class="block text-sm font-semibold text-slate-700 mb-1.5">
               Harga Awal (Start Bid - Rp) <span class="text-red-500">*</span>
             </label>
             <input
               type="number"
               min="1000"
               step="1000"
+              id="edit-aucation-start-bid-input"
               data-testid="edit-aucation-start-bid-input"
               v-model="startBid"
               placeholder="Contoh: 500000"
               class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 transition-all text-sm shadow-xs"
               required
+              aria-required="true"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+            <label for="edit-aucation-closed-at-input" class="block text-sm font-semibold text-slate-700 mb-1.5">
               Batas Waktu Penutupan <span class="text-red-500">*</span>
             </label>
             <input
               type="datetime-local"
+              id="edit-aucation-closed-at-input"
               data-testid="edit-aucation-closed-at-input"
               v-model="closedAt"
               class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 transition-all text-sm shadow-xs"
               required
+              aria-required="true"
             />
           </div>
         </div>
@@ -95,6 +105,7 @@
           data-testid="cancel-edit-modal-btn"
           @click="onClose"
           :disabled="loading"
+          aria-label="Batal"
           class="px-5 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-200/60 rounded-xl transition-colors"
         >
           Batal
@@ -103,14 +114,15 @@
           type="submit"
           data-testid="submit-edit-modal-btn"
           :disabled="loading"
+          aria-label="Perbarui Lelang"
           class="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold text-white bg-amber-600 hover:bg-amber-700 active:bg-amber-800 rounded-xl shadow-md shadow-amber-600/25 transition-all disabled:opacity-60"
         >
           <template v-if="loading">
-            <Loader2 :size="18" class="animate-spin" />
+            <Loader2 :size="18" class="animate-spin" aria-hidden="true" />
             <span>Menyimpan...</span>
           </template>
           <template v-else>
-            <Edit3 :size="18" :stroke-width="2.5" />
+            <Edit3 :size="18" :stroke-width="2.5" aria-hidden="true" />
             <span>Perbarui Lelang</span>
           </template>
         </button>
